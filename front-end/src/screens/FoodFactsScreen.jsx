@@ -12,6 +12,7 @@ import colors from '../config/colors'
 import ActivityIndicator from '../components/ActivityIndicator';
 
 import { addFood } from '../utils/saveData'
+import { getData } from '../utils/cache';
 
 
 import { selectFacts } from '../utils/selectFacts'
@@ -58,13 +59,7 @@ const FoodFactsScreen = ({ route, navigation }) => {
     }, []);
 
     const handelAddFood = async (categorie, food) => {
-
-        addFood(name, text).then(async () => {
-            const foodList = await getData(name)
-            setFood(foodList)
-        })
-
-
+        await addFood(categorie, food)
     }
 
 
